@@ -19,7 +19,12 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'scp -r dist/* root@165.22.217.78:/var/www/html/react-app'
+                script {
+                    def src = 'dist/*'
+                    def dest = 'root@165.22.217.78:/var/www/html/react-app'
+                    sh "echo 'Deploying to ${dest}'"
+                    sh "scp -rv ${src} ${dest}"  // Verbose logging for scp
+                }
             }
         }
     }
