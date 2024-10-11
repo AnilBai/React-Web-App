@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/AnilBai/React-Web-App.git'
+                checkout scm
             }
         }
         stage('Install Dependencies') {
